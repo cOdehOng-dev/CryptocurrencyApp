@@ -1,4 +1,4 @@
-package com.c0de_h0ng.cryptocurrencyapp.presentation.theme
+package com.c0de_h0ng.cryptocurrencyapp.presentation.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

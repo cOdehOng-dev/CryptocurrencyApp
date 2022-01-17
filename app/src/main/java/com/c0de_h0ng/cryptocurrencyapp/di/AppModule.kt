@@ -1,11 +1,15 @@
 package com.c0de_h0ng.cryptocurrencyapp.di
 
+import com.c0de_h0ng.cryptocurrencyapp.common.Constants.BASE_URL
 import com.c0de_h0ng.cryptocurrencyapp.data.remote.CoinPaprikaApi
+import com.c0de_h0ng.cryptocurrencyapp.data.repository.CoinRepositoryImpl
+import com.c0de_h0ng.cryptocurrencyapp.domain.repository.CoinRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 /**
@@ -19,6 +23,15 @@ object AppModule {
     @Singleton
     fun providePaprikaApi(): CoinPaprikaApi {
         return Retrofit.Builder()
-            .baseUrl()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(CoinPaprikaApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCoinRepository(api: CoinPaprikaApi): CoinRepository {
+        return CoinRepositoryImpl(api)
     }
 }
