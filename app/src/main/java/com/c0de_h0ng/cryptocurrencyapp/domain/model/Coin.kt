@@ -1,6 +1,5 @@
 package com.c0de_h0ng.cryptocurrencyapp.domain.model
 
-import com.google.gson.annotations.SerializedName
 
 /**
  * Created by c0de_h0ng on 2022/01/16.
